@@ -1,5 +1,19 @@
 import styled, { keyframes, css } from 'styled-components';
 
+const pisca = keyframes`
+    0% {
+        border-color: #fff;
+    }
+
+    50% {
+        border-color: red;
+    }
+
+    100% {
+        border-color: #fff;
+    }
+`;
+
 export const Form = styled.form`
     margin-top: 30px;
     display: flex;
@@ -15,7 +29,7 @@ export const Form = styled.form`
         ${props =>
             props.getFailed &&
             css`
-                border-color: red;
+                animation: ${pisca} 1s linear infinite;
             `}
     }
 `;

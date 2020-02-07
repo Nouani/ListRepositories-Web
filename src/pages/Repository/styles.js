@@ -101,3 +101,44 @@ export const IssueList = styled.ul`
         }
     }
 `;
+
+export const FilterOptions = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    h4 {
+        margin-right: 5px;
+    }
+`;
+
+export const GroupButton = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+`;
+
+export const ButtonPage = styled.button`
+    border-style: none;
+    background: #333333;
+    padding: 5px 15px;
+    border-radius: 5px 0 0 5px;
+    transition: background 0.2s;
+
+    & + button {
+        border-radius: 0 5px 5px 0;
+        margin-left: 2px;
+    }
+
+    &:hover {
+        background: #7159c1;
+        color: #fff;
+    }
+
+    svg {
+        display: flex;
+        align-items: center;
+    }
+`;

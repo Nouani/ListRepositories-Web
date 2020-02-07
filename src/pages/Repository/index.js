@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList } from './styles';
+import {
+    Loading,
+    Owner,
+    IssueList,
+    FilterOptions,
+    GroupButton,
+    ButtonPage,
+} from './styles';
 
 export default class Repository extends Component {
     propTypes = {
@@ -19,6 +27,8 @@ export default class Repository extends Component {
         repository: {},
         issues: [],
         loading: true,
+        filter: 'all',
+        repoName: '',
     };
 
     async componentDidMount() {
@@ -30,7 +40,7 @@ export default class Repository extends Component {
             api.get(`/repos/${repoName}`),
             api.get(`/repos/${repoName}/issues`, {
                 params: {
-                    state: 'open',
+                    state: 'all',
                     per_page: 5,
                 },
             }),
@@ -40,8 +50,28 @@ export default class Repository extends Component {
             repository: repository.data,
             issues: issues.data,
             loading: false,
+            repoName,
         });
     }
+
+    async componentDidUpdate(_, prevState) {
+        const { filter, repoName } = this.state;
+
+        if (prevState.filter !== filter) {
+            const issues = await api.get(`/repos/${repoName}/issues`, {
+                params: {
+                    state: filter,
+                    per_page: 5,
+                },
+            });
+
+            this.setState({ issues: issues.data });
+        }
+    }
+
+    handleChangeOption = e => {
+        this.setState({ filter: e.target.value });
+    };
 
     render() {
         const { repository, issues, loading } = this.state;
@@ -63,6 +93,18 @@ export default class Repository extends Component {
                 </Owner>
 
                 <IssueList>
+                    <FilterOptions>
+                        <h4>Filtrar por:</h4>
+                        <select
+                            name="example"
+                            onChange={this.handleChangeOption}
+                        >
+                            <option value="all">Todas</option>
+                            <option value="open">Abertas</option>
+                            <option value="closed">Fechadas</option>
+                        </select>
+                    </FilterOptions>
+
                     {issues.map(issue => (
                         <li key={String(issue.id)}>
                             <img
@@ -82,6 +124,15 @@ export default class Repository extends Component {
                             </div>
                         </li>
                     ))}
+
+                    <GroupButton>
+                        <ButtonPage type="text">
+                            <FaArrowLeft color="#eee" />
+                        </ButtonPage>
+                        <ButtonPage type="text">
+                            <FaArrowRight color="#eee" />
+                        </ButtonPage>
+                    </GroupButton>
                 </IssueList>
             </Container>
         );

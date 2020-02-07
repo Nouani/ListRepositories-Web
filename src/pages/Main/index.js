@@ -32,6 +32,10 @@ export default class Main extends Component {
     }
 
     handleInputChange = e => {
+        if (e.target.value === '') {
+            this.setState({ getFailed: false });
+        }
+
         this.setState({ newRepo: e.target.value });
     };
 
@@ -42,6 +46,13 @@ export default class Main extends Component {
             this.setState({ loading: true });
 
             const { newRepo, repositories } = this.state;
+
+            repositories.map(data => {
+                if (data.name === newRepo) {
+                    throw new Error('Repositório duplicado');
+                }
+            });
+
             const response = await api.get(`/repos/${newRepo}`);
 
             const data = {
