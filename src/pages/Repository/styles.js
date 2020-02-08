@@ -120,7 +120,9 @@ export const GroupButton = styled.div`
     margin-top: 15px;
 `;
 
-export const ButtonPage = styled.button`
+export const ButtonPage = styled.button.attrs(props => ({
+    disabled: props.desabilitar,
+}))`
     border-style: none;
     background: #333333;
     padding: 5px 15px;
@@ -135,6 +137,15 @@ export const ButtonPage = styled.button`
     &:hover {
         background: #7159c1;
         color: #fff;
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.6;
+
+        &:hover {
+            background: #333333;
+        }
     }
 
     svg {

@@ -29,6 +29,8 @@ export default class Repository extends Component {
         loading: true,
         filter: 'all',
         repoName: '',
+        page: 1,
+        numberPages: 10,
     };
 
     async componentDidMount() {
@@ -54,28 +56,38 @@ export default class Repository extends Component {
         });
     }
 
-    async componentDidUpdate(_, prevState) {
-        const { filter, repoName } = this.state;
+    loadIssues = async () => {
+        const { filter, repoName, page } = this.state;
 
-        if (prevState.filter !== filter) {
-            const issues = await api.get(`/repos/${repoName}/issues`, {
-                params: {
-                    state: filter,
-                    per_page: 5,
-                },
-            });
+        const response = await api.get(`/repos/${repoName}/issues`, {
+            params: {
+                state: filter,
+                per_page: 5,
+                page,
+            },
+        });
 
-            this.setState({ issues: issues.data });
-        }
-    }
+        this.setState({ issues: response.data });
+    };
 
-    handleChangeOption = e => {
-        this.setState({ filter: e.target.value });
+    handleChangeOption = async e => {
+        await this.setState({ filter: e.target.value });
+        this.loadIssues();
+    };
+
+    handleChangeFilter = async signal => {
+        const { page } = this.state;
+
+        await this.setState({
+            page: signal === '-' ? page - 1 : page + 1,
+        });
+
+        this.loadIssues();
     };
 
     render() {
-        const { repository, issues, loading } = this.state;
-
+        const { repository, issues, loading, page, numberPages } = this.state;
+        console.log(page);
         if (loading) {
             return <Loading>Carregando...</Loading>;
         }
@@ -126,11 +138,22 @@ export default class Repository extends Component {
                     ))}
 
                     <GroupButton>
-                        <ButtonPage type="text">
+                        <ButtonPage
+                            type="text"
+                            onClick={() => this.handleChangeFilter('-')}
+                            desabilitar={page === 1}
+                        >
                             <FaArrowLeft color="#eee" />
+                            <p>{page - 1}</p>
                         </ButtonPage>
-                        <ButtonPage type="text">
+                        <h3>{page}</h3>
+                        <ButtonPage
+                            type="text"
+                            onClick={() => this.handleChangeFilter('+')}
+                            desabilitar={page === numberPages}
+                        >
                             <FaArrowRight color="#eee" />
+                            <p>{page + 1}</p>
                         </ButtonPage>
                     </GroupButton>
                 </IssueList>
