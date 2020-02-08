@@ -30,7 +30,7 @@ export default class Repository extends Component {
         filter: 'all',
         repoName: '',
         page: 1,
-        numberPages: 10,
+        numberPages: 3,
     };
 
     async componentDidMount() {
