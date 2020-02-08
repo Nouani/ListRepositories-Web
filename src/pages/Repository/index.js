@@ -57,6 +57,8 @@ export default class Repository extends Component {
     }
 
     loadIssues = async () => {
+        this.setState({ loadingIssue: true });
+
         const { filter, repoName, page } = this.state;
 
         const response = await api.get(`/repos/${repoName}/issues`, {
@@ -67,7 +69,7 @@ export default class Repository extends Component {
             },
         });
 
-        this.setState({ issues: response.data });
+        this.setState({ issues: response.data, loadingIssue: false });
     };
 
     handleChangeOption = async e => {
@@ -87,7 +89,7 @@ export default class Repository extends Component {
 
     render() {
         const { repository, issues, loading, page, numberPages } = this.state;
-        console.log(page);
+
         if (loading) {
             return <Loading>Carregando...</Loading>;
         }
@@ -144,16 +146,13 @@ export default class Repository extends Component {
                             desabilitar={page === 1}
                         >
                             <FaArrowLeft color="#eee" />
-                            <p>{page - 1}</p>
                         </ButtonPage>
-                        <h3>{page}</h3>
                         <ButtonPage
                             type="text"
                             onClick={() => this.handleChangeFilter('+')}
                             desabilitar={page === numberPages}
                         >
                             <FaArrowRight color="#eee" />
-                            <p>{page + 1}</p>
                         </ButtonPage>
                     </GroupButton>
                 </IssueList>

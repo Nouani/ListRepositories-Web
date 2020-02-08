@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Loading = styled.div`
     color: #fff;
@@ -123,11 +123,15 @@ export const GroupButton = styled.div`
 export const ButtonPage = styled.button.attrs(props => ({
     disabled: props.desabilitar,
 }))`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     border-style: none;
     background: #333333;
     padding: 5px 15px;
     border-radius: 5px 0 0 5px;
     transition: background 0.2s;
+    opacity: 1;
 
     & + button {
         border-radius: 0 5px 5px 0;
@@ -147,6 +151,12 @@ export const ButtonPage = styled.button.attrs(props => ({
             background: #333333;
         }
     }
+
+    ${props =>
+        props.loadingIssue &&
+        css`
+            opacity: 0;
+        `}
 
     svg {
         display: flex;
