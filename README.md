@@ -41,7 +41,7 @@
 
 ## :page_with_curl: Description
 
-This project was developed in the ReactJS Phase 3 Module 2 classes and based on the description of the fifth challenge of the GoStack bootcamp.
+This project was developed during the bootcamp classes and based on the description of the fifth challenge of the GoStack bootcamp.
 
 We had to create a web application that would list GitHub repositories (using its API) and the details of each repository including issues with pagination.
 
