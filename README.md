@@ -5,24 +5,24 @@
 ---
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Nouani/GoStack-FifthChallenge.svg">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Nouani/Add-Repositories.svg">
 
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Nouani/GoStack-FifthChallenge.svg">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Nouani/Add-Repositories.svg">
 
-  <a href="https://www.codacy.com/app/Nouani/GoStack-FifthChallenge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nouani/GoStack-FifthChallenge&amp;utm_campaign=Badge_Grade">
+  <a href="https://www.codacy.com/app/Nouani/Add-Repositories?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nouani/Add-Repositories&amp;utm_campaign=Badge_Grade">
     <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/1b577a07dda843aba09f4bc55d1af8fc.svg">
   </a>
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Nouani/GoStack-FifthChallenge.svg">
-  <a href="https://github.com/Nouani/GoStack-FifthChallenge/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Nouani/GoStack-FifthChallenge.svg">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Nouani/Add-Repositories.svg">
+  <a href="https://github.com/Nouani/Add-Repositories/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Nouani/Add-Repositories.svg">
   </a>
 
-  <a href="https://github.com/Nouani/GoStack-FifthChallenge/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/Nouani/GoStack-FifthChallenge.svg">
+  <a href="https://github.com/Nouani/Add-Repositories/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/Nouani/Add-Repositories.svg">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/Nouani/GoStack-FifthChallenge.svg">
+  <img alt="GitHub" src="https://img.shields.io/github/license/Nouani/Add-Repositories.svg">
 </p>
 
 
@@ -61,10 +61,10 @@ We had to create a web application that would list GitHub repositories (using it
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/Nouani/GoStack-FifthChallenge.git
+$ git clone https://github.com/Nouani/Add-Repositories.git
 
 # Go into the repository
-$ cd GoStack-FifthChallenge
+$ cd Add-Repositories
 
 # Install dependencies
 $ yarn
