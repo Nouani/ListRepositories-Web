@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +8,14 @@
 
 body {
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  background: #141418;
 }
 
-div {
+/*div {
   width: 100%;
   margin: 20px;
+  border: 1px solid red;
 }
 
 div li {
@@ -20,20 +25,91 @@ div li {
 
 div li + li {
   margin-top: 15px;
-}
+} */
 
 button {
   background: #7159c1;
   color: #fff;
   border: 0;
-  padding: 10px 15px;
+  padding: 10px 20px;
   cursor: pointer;
-  margin-top: 15px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
+  border-radius: 3px;
 }
 
-div li button {
-  margin: 0 15px;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container > ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.container > ul li {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+  background: #fff;
+  border-radius: 4px;
+  width: 300px;
+  flex-wrap: wrap;
+}
+
+.container > ul li + li {
+  margin-left: 15px;
+}
+
+.container > ul li h1 {
+  margin-bottom: 5px;
+  color: rgb(66, 66, 66);
+  font-size: 35px;
+  align-self: center;
+}
+
+.container > ul li > div.techs {
+  display: flex;
+  margin-bottom: 8px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.container > ul li > p {
+  font-size: 14px;
+  color: rgb(66, 66, 66);
+}
+
+.techs > p {
+  background-color: rgba(0, 89, 173, 0.226);
+  color: #fff;
+  padding: 4px 7px;
+  border-radius: 2px;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.techs > p + p {
+  margin-left: 5px;
+  flex-wrap: wrap;
+}
+
+.container > ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: rgba(0, 89, 173, 0.829);
+}
+
+.container > ul li > button {
   background: #ca4949;
+  width: 100%;
+  margin-top: auto;
 }
