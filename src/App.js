@@ -14,7 +14,16 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('/repositories', {
+      title: 'Aplicação Mobile',
+      url: 'https://github.com/Nouani/aplicacao',
+      techs: [
+        'React Native',
+        'Kotlin'
+      ]
+    });
+
+    setRepositories([...repositories, response.data]);
   }
 
   async function handleRemoveRepository(id) {
@@ -30,17 +39,18 @@ function App() {
         {repositories.map(repository => (
           <li key={repository.id}>
             <h1>{repository.title}</h1>
-            <p>Tecnologias</p>
-            <div className="techs">
-              {repository.techs.map(tech => (
-                <p key={tech}>{tech}</p>
-              ))}
+            <div className="content">
+              <p>Tecnologias</p>
+              <div className="techs">
+                {repository.techs.map(tech => (
+                  <p key={tech}>{tech}</p>
+                ))}
+              </div>
+              <a href={repository.url}>Link do repositório</a>
+              <button onClick={() => handleRemoveRepository(repository.id)}>
+                Remover
+              </button>
             </div>
-            <a href={repository.url}>Link do repositório</a>
-
-            <button onClick={() => handleRemoveRepository(repository.id)}>
-              Remover
-          </button>
           </li>
         ))}
       </ul>

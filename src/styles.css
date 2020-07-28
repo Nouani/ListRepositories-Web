@@ -62,6 +62,7 @@ button {
   border-radius: 4px;
   width: 300px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .container > ul li + li {
@@ -71,18 +72,18 @@ button {
 .container > ul li h1 {
   margin-bottom: 5px;
   color: rgb(66, 66, 66);
-  font-size: 35px;
+  font-size: 28px;
   align-self: center;
 }
 
-.container > ul li > div.techs {
+.container > ul li .content > div.techs {
   display: flex;
   margin-bottom: 8px;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.container > ul li > p {
+.container > ul li .content > p {
   font-size: 14px;
   color: rgb(66, 66, 66);
 }
@@ -101,15 +102,19 @@ button {
   flex-wrap: wrap;
 }
 
-.container > ul li a {
+.container > ul li .content a {
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 15px;
   color: rgba(0, 89, 173, 0.829);
 }
 
-.container > ul li > button {
+.content {
+  margin-top: auto;
+}
+
+.container > ul li .content > button {
   background: #ca4949;
   width: 100%;
-  margin-top: auto;
+  
 }
